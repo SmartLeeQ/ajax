@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+          $("#button1").click(function(){
+            $.get("http://localhost:3000/auth/300/12",function(data,status){
+              alert("name：" + data.name+"id:"+data.id + "\n状态：" + status);
+              console.log(data);
+            });
+          });
+          $("#button2").click(function(){
+            $.post("http://localhost:3000/hello",
+            {
+             id:"1",
+             name:"李小强"
+            }
+            ,function(data,status){
+              console.log(data);
+              alert(data);
+              $("p").text("我的id是"+data.id+"我的名字是"+data.name);
+            });
+          })
+         });
+    </script>
+
+</head>
+<body> 
+<button id="button1">向页面发送 HTTP GET 请求，然后获得返回的结果</button>
+<button id="button2">向页面发送 HTTP post 请求，然后获得返回的结果</button>
+ <p></p>
+</body>
+</html>
